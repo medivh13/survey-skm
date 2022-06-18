@@ -1,20 +1,20 @@
 package route
 
 import (
-	checkoutHandler "auth-skm/src/interface/rest/handlers/checkout"
-	"auth-skm/src/interface/rest/middleware"
+	userHandler "auth-skm/src/interface/rest/handlers/user"
 
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
 )
 
-func CheckoutAppRouter(ch checkoutHandler.CheckoutHandlerInterface) http.Handler {
+func UserAppRouter(uh userHandler.UserHandlerInterface) http.Handler {
 	r := chi.NewRouter()
 
-	r.Use(middleware.CheckAPWebHeader)
+	// not using middleware yet
+	// r.Use(middleware.CheckAPWebHeader)
 
-	r.Mount("/", CheckoutRouter(ch))
+	r.Mount("/", UserRouter(uh))
 
 	return r
 }

@@ -6,14 +6,15 @@ package models
  * Domain      : auth-skm
  */
 
-import "time"
+import (
+	"time"
+)
 
-type Items struct {
+type Users struct {
 	ID        int64     `gorm:"id"`
-	SKU       string    `gorm:"sku"`
-	Name      string    `gorm:"name"`
-	Price     float64   `gorm:"price"`
-	Qty       float64   `gorm:"inventory_qty"`
+	Name      string    `gorm:"display_name"`
+	Email     string    `gorm:"email_address"`
+	Password  string    `gorm:"password"`
 	CreatedAt time.Time `gorm:"created_at"`
 	UpdatedAt time.Time `gorm:"updated_at"`
 }

@@ -15,7 +15,7 @@ import (
 	"auth-skm/src/interface/rest/response"
 	"auth-skm/src/interface/rest/route"
 
-	checkoutHandler "auth-skm/src/interface/rest/handlers/checkout"
+	userHandler "auth-skm/src/interface/rest/handlers/user"
 
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
@@ -91,12 +91,13 @@ func makeRoute(
 
 	respClient := response.NewResponseClient()
 	hh := handlers.NewHealthHandler(respClient)
-	ch := checkoutHandler.NewCheckoutHandler(respClient, useCases.CheckoutUseCase)
+
+	uh := userHandler.NewUserHandler(respClient, useCases.UserUseCase, useCases.LoginUseCase)
 
 	r.Route("/api", func(r chi.Router) {
 		// health check
 		r.Mount("/", route.HealthRouter(hh))
-		r.Mount("/checkout", route.CheckoutAppRouter(ch))
+		r.Mount("/skm", route.UserAppRouter(uh))
 
 	})
 

@@ -1,9 +1,11 @@
 package usecases
 
 import (
-	checkoutUc "auth-skm/src/app/use_cases/checkout"
+	loginUc "auth-skm/src/app/use_cases/login"
+	userUc "auth-skm/src/app/use_cases/user"
 )
 
 type AllUseCases struct {
-	CheckoutUseCase checkoutUc.CheckoutUsecaseInterface
+	UserUseCase  userUc.UserUsecaseInterface
+	LoginUseCase loginUc.LoginUsecaseInterface
 }
