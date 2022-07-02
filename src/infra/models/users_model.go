@@ -3,7 +3,7 @@ package models
 /*
  * Author      : Jody (jody.almaida@gmail)
  * Modifier    :
- * Domain      : auth-skm
+ * Domain      : survey-skm
  */
 
 import (

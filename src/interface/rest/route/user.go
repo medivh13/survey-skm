@@ -3,7 +3,7 @@ package route
 import (
 	"net/http"
 
-	userHandler "auth-skm/src/interface/rest/handlers/user"
+	userHandler "survey-skm/src/interface/rest/handlers/user"
 
 	"github.com/go-chi/chi/v5"
 )

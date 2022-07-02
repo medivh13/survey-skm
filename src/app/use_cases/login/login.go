@@ -3,15 +3,15 @@ package user_usecases
 /*
  * Author      : Jody (jody.almaida@gmail.com)
  * Modifier    :
- * Domain      : auth-skm
+ * Domain      : survey-skm
  */
 
 import (
-	dto "auth-skm/src/app/dtos/login"
-	"auth-skm/src/domain/repositories"
-	infraHelper "auth-skm/src/infra/helpers"
 	"context"
 	"log"
+	dto "survey-skm/src/app/dtos/login"
+	"survey-skm/src/domain/repositories"
+	infraHelper "survey-skm/src/infra/helpers"
 )
 
 type LoginUsecaseInterface interface {

@@ -3,14 +3,14 @@ package user_usecases
 /*
  * Author      : Jody (jody.almaida@gmail.com)
  * Modifier    :
- * Domain      : auth-skm
+ * Domain      : survey-skm
  */
 
 import (
-	dto "auth-skm/src/app/dtos/users"
-	"auth-skm/src/domain/repositories"
 	"context"
 	"log"
+	dto "survey-skm/src/app/dtos/users"
+	"survey-skm/src/domain/repositories"
 )
 
 type UserUsecaseInterface interface {

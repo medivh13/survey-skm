@@ -11,7 +11,7 @@ I use existing libs :
 
 # For setup after cloning the repo:
 
-cd auth-skm go mod tidy
+cd survey-skm go mod tidy
 
 # to do a unit test :
 

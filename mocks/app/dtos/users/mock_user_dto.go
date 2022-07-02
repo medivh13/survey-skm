@@ -1,7 +1,7 @@
 package mock_userdto
 
 import (
-	dto "auth-skm/src/app/dtos/users"
+	dto "survey-skm/src/app/dtos/users"
 
 	"github.com/stretchr/testify/mock"
 )

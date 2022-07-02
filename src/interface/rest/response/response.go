@@ -5,7 +5,7 @@ import (
 	"math"
 	"net/http"
 
-	infra_errors "auth-skm/src/infra/errors"
+	infra_errors "survey-skm/src/infra/errors"
 )
 
 // HealthCheckMessage displays information about the service

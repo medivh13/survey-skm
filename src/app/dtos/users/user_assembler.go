@@ -1,7 +1,7 @@
 package users_dto
 
 import (
-	models "auth-skm/src/infra/models"
+	models "survey-skm/src/infra/models"
 )
 
 func ToReturnSaveUser(d *models.Users) *UserRespDTO {

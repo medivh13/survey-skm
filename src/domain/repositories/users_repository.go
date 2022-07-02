@@ -3,14 +3,14 @@ package repositories
 /*
  * Author      : Jody (jody.almaida@gmail.com)
  * Modifier    :
- * Domain      : auth-skm
+ * Domain      : survey-skm
  */
 
 import (
-	dtoLogin "auth-skm/src/app/dtos/login"
-	dto "auth-skm/src/app/dtos/users"
-	models "auth-skm/src/infra/models"
 	"context"
+	dtoLogin "survey-skm/src/app/dtos/login"
+	dto "survey-skm/src/app/dtos/users"
+	models "survey-skm/src/infra/models"
 )
 
 type UsersRepository interface {

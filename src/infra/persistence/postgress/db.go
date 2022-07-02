@@ -3,14 +3,14 @@ package postgres
 /*
  * Author      : Jody (jody.almaida@gmail)
  * Modifier    :
- * Domain      : auth-skm
+ * Domain      : survey-skm
  */
 
 import (
 	"database/sql"
 	"fmt"
 
-	"auth-skm/src/infra/config"
+	"survey-skm/src/infra/config"
 
 	"github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
