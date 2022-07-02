@@ -18,6 +18,7 @@ import (
 
 	common_error "auth-skm/src/infra/errors"
 	"auth-skm/src/interface/rest/response"
+	_ "net/http/pprof"
 )
 
 type UserHandlerInterface interface {

@@ -27,3 +27,7 @@ ALTER TABLE ONLY master.users
     ADD CONSTRAINT users_email_address_key UNIQUE (email_address);
 
 CREATE INDEX usersindex ON master.users USING btree (deleted_at, id, email_address);
+
+-- end user--
+
+
