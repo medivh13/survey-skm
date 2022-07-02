@@ -13,8 +13,7 @@ import (
 
 	ms_log "survey-skm/src/infra/log"
 
-	loginUc "survey-skm/src/app/use_cases/login"
-	userUc "survey-skm/src/app/use_cases/user"
+	respondenUc "survey-skm/src/app/use_cases/responden"
 
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/sirupsen/logrus"
@@ -55,16 +54,14 @@ func main() {
 		}
 	}(logger, postgresdb.SqlDB, postgresdb.DB.Name())
 
-	userRepository := postgres.NewUsersRepository(postgresdb.DB)
+	respondenRepository := postgres.NewRespondenRepository(postgresdb.DB)
 
 	httpServer, err := rest.New(
 		conf.Http,
 		isProd,
 		logger,
 		usecases.AllUseCases{
-
-			UserUseCase:  userUc.NewUserUseCase(userRepository),
-			LoginUseCase: loginUc.NewUserUseCase(userRepository),
+			RespondenUseCase: respondenUc.NewRespondenUseCase(respondenRepository),
 		},
 	)
 	if err != nil {

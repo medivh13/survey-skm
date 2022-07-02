@@ -8,6 +8,7 @@ package postgres
 
 import (
 	"context"
+	"log"
 
 	dto "survey-skm/src/app/dtos/respondens"
 	repositories "survey-skm/src/domain/repositories"
@@ -20,14 +21,15 @@ type respondenRepository struct {
 	connection *gorm.DB
 }
 
-func NewRespondensRepository(db *gorm.DB) repositories.RespondenRepository {
+func NewRespondenRepository(db *gorm.DB) repositories.RespondenRepository {
 	return &respondenRepository{
 		connection: db,
 	}
 }
 
-func (repo *usersRepository) CreateQuisionerData(ctx context.Context, data *dto.RespondenReqDTO) error {
+func (repo *respondenRepository) CreateQuisionerData(ctx context.Context, data *dto.RespondenReqDTO) error {
 	respondenModel := models.Respondens{}
+	respondenDetailModel := models.RespondenDetails{}
 	q := repo.connection.WithContext(ctx)
 	tx := q.Begin()
 	defer func() {
@@ -45,6 +47,7 @@ func (repo *usersRepository) CreateQuisionerData(ctx context.Context, data *dto.
 		display_name, email_address, umur, pekerjaan_id, pendidikan_id, layanan_id) 
 		VALUES (?,?,?,?,?,?) RETURNING id`, data.Name, data.Email, data.Umur, data.PekerjaanID, data.PendidikanID, data.LayananID).Scan(&respondenModel).Error; err != nil {
 		tx.Rollback()
+		log.Println(err)
 		return err
 	}
 
@@ -52,8 +55,9 @@ func (repo *usersRepository) CreateQuisionerData(ctx context.Context, data *dto.
 		if err := tx.Raw(`INSERT INTO
 	survey.responden_details (
 		responden_id, pertanyaan_id, jawaban_id, nilai) 
-		VALUES (?,?,?,?)`, respondenModel.ID, val.PertanyaanID, val.JawabanID, val.Nilai).Error; err != nil {
+		VALUES (?,?,?,?)`, respondenModel.ID, val.PertanyaanID, val.JawabanID, val.Nilai).Scan(&respondenDetailModel).Error; err != nil {
 			tx.Rollback()
+			log.Println(err)
 			return err
 		}
 	}

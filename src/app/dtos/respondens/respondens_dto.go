@@ -1,6 +1,8 @@
 package respondens_dto
 
 import (
+	"log"
+
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/go-ozzo/ozzo-validation/is"
 )
@@ -30,11 +32,13 @@ func (dto *RespondenReqDTO) Validate() error {
 		dto,
 		validation.Field(&dto.Name, validation.Required),
 		validation.Field(&dto.Email, validation.Required, is.Email),
-		validation.Field(&dto.Umur, validation.Required, is.Int),
-		validation.Field(&dto.PekerjaanID, validation.Required, is.Int),
-		validation.Field(&dto.PendidikanID, validation.Required, is.Int),
-		validation.Field(&dto.LayananID, validation.Required, is.Int),
+		validation.Field(&dto.Umur, validation.Required, validation.Min(17)),
+		validation.Field(&dto.PekerjaanID, validation.Required, validation.Min(1)),
+		validation.Field(&dto.PendidikanID, validation.Required, validation.Min(1)),
+		validation.Field(&dto.LayananID, validation.Required, validation.Min(1)),
+		validation.Field(&dto.Quisioner, validation.Required),
 	); err != nil {
+		log.Println(err)
 		return err
 	}
 	return nil

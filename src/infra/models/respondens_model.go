@@ -21,3 +21,12 @@ type Respondens struct {
 	CreatedAt    time.Time `gorm:"created_at"`
 	UpdatedAt    time.Time `gorm:"updated_at"`
 }
+
+type RespondenDetails struct {
+	ID           int64     `gorm:"id"`
+	PertanyaanID int64     `gorm:"pertanyaan_id"`
+	JawabanID    int64     `gorm:"jawaban_id"`
+	Nilai        int64     `gorm:"nilai"`
+	CreatedAt    time.Time `gorm:"created_at"`
+	UpdatedAt    time.Time `gorm:"updated_at"`
+}
