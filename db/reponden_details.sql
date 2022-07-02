@@ -18,19 +18,19 @@ CREATE TABLE survey.responden_details (
 	  REFERENCES master.jawabans(id)
 );
 
-CREATE SEQUENCE survey.respondens_id_seq
+CREATE SEQUENCE survey.responden_details_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
-ALTER SEQUENCE survey.respondens_id_seq OWNED BY survey.respondens.id;
+ALTER SEQUENCE survey.responden_details_id_seq OWNED BY survey.responden_details.id;
 
-ALTER TABLE ONLY survey.respondens ALTER COLUMN id SET DEFAULT nextval('survey.respondens_id_seq'::regclass);
+ALTER TABLE ONLY survey.responden_details ALTER COLUMN id SET DEFAULT nextval('survey.responden_details_id_seq'::regclass);
 
-ALTER TABLE ONLY survey.respondens
-    ADD CONSTRAINT respondens_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY survey.responden_details
+    ADD CONSTRAINT responden_details_pkey PRIMARY KEY (id);
 
 
-CREATE INDEX respondens_index ON survey.respondens USING btree (deleted_at, id, umur, pekerjaan_id, pendidikan_id);
+CREATE INDEX responden_details_index ON survey.responden_details USING btree (deleted_at, id, responden_id);
