@@ -24,4 +24,4 @@ the endpoint
 
 # postman link for the endpoint test
 
-https://www.getpostman.com/collections/d385aa0f4dd0c8daa1dd
+https://www.getpostman.com/collections/4eac8541e06761b2557d
