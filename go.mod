@@ -1,4 +1,4 @@
-module auth-skm
+module survey-skm
 
 go 1.17
 
