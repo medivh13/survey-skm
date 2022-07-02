@@ -34,5 +34,8 @@ ALTER TABLE ONLY survey.respondens ALTER COLUMN id SET DEFAULT nextval('survey.r
 ALTER TABLE ONLY survey.respondens
     ADD CONSTRAINT respondens_pkey PRIMARY KEY (id);
 
+ALTER TABLE ONLY survey.respondens
+    ADD CONSTRAINT respondens_email_address_key UNIQUE (email_address);
+
 
 CREATE INDEX respondens_index ON survey.respondens USING btree (deleted_at, id, umur, pekerjaan_id, pendidikan_id);
