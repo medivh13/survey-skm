@@ -20,6 +20,7 @@ import (
 
 type RespondenHandlerInterface interface {
 	CreateQuisionerData(w http.ResponseWriter, r *http.Request)
+	GetQuisionerDataEachLayanan(w http.ResponseWriter, r *http.Request)
 }
 
 type respondenHandler struct {
@@ -59,6 +60,22 @@ func (h *respondenHandler) CreateQuisionerData(w http.ResponseWriter, r *http.Re
 		w,
 		"Successful Create Quisioner",
 		nil,
+		nil,
+	)
+}
+
+func (h *respondenHandler) GetQuisionerDataEachLayanan(w http.ResponseWriter, r *http.Request) {
+
+	data, err := h.usecase.GetQuisionerDataEachLayanan(r.Context())
+	if err != nil {
+		h.response.HttpError(w, common_error.NewError(common_error.UNKNOWN_ERROR, err))
+		return
+	}
+
+	h.response.JSON(
+		w,
+		"Successful Get Quisioner Data",
+		data,
 		nil,
 	)
 }

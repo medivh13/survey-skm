@@ -64,3 +64,31 @@ func (repo *respondenRepository) CreateQuisionerData(ctx context.Context, data *
 
 	return tx.Commit().Error
 }
+
+func (repo *respondenRepository) GetQuisionerDataEachLayanan(ctx context.Context) ([]*models.ResultQuisonerByEachLayanan, error) {
+	data := []*models.ResultQuisonerByEachLayanan{}
+
+	q := repo.connection.WithContext(ctx)
+
+	if err := q.Raw(`select 
+	lyn.display_name as layanan,
+	r.display_name as responden,
+	r.umur,
+	pk.display_name as pekerjaan,
+	pd.display_name as pendidikan,
+	sum(rd.nilai) as nilai
+	from
+	master.layanan_opds lyn 
+	JOIN survey.respondens r ON lyn.id = r.layanan_id
+	JOIN survey.responden_details rd ON r.id = rd.responden_id
+	JOIN master.pekerjaans pk ON pk.id = r.pekerjaan_id
+	JOIN master.pendidikans pd ON pd.id = r.pendidikan_id
+	GROUP BY r.layanan_id, lyn.display_name, lyn.id, r.display_name, r.umur, pk.display_name, pd.display_name
+	ORDER BY lyn.id`).Scan(&data).Error; err != nil {
+
+		log.Println(err)
+		return nil, err
+	}
+
+	return data, nil
+}
