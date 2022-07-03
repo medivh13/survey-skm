@@ -15,6 +15,7 @@ import (
 
 type ResondenUsecaseInterface interface {
 	CreateQuisionerData(ctx context.Context, data *dto.RespondenReqDTO) error
+	GetQuisionerDataEachLayanan(ctx context.Context) ([]*dto.QuisionerEachLayananRespDTO, error)
 }
 
 type respondenUseCase struct {
@@ -36,4 +37,15 @@ func (uc *respondenUseCase) CreateQuisionerData(ctx context.Context, data *dto.R
 	}
 
 	return nil
+}
+
+func (uc *respondenUseCase) GetQuisionerDataEachLayanan(ctx context.Context) ([]*dto.QuisionerEachLayananRespDTO, error) {
+
+	data, err := uc.RespondenRepo.GetQuisionerDataEachLayanan(ctx)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+
+	return dto.ToReturnQuisonerData(data), nil
 }

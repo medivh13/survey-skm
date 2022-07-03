@@ -30,3 +30,12 @@ type RespondenDetails struct {
 	CreatedAt    time.Time `gorm:"created_at"`
 	UpdatedAt    time.Time `gorm:"updated_at"`
 }
+
+type ResultQuisonerByEachLayanan struct {
+	Layanan    string `gorm:"layanan"`
+	Responden  string `gorm:"respondend"`
+	Umur       string `gorm:"umur"`
+	Pekerjaan  string `gorm:"pekerjaan"`
+	Pendidikan string `gorm:"pendidikan"`
+	Nilai      int64  `gorm:"nilai"`
+}

@@ -44,7 +44,15 @@ func (dto *RespondenReqDTO) Validate() error {
 	return nil
 }
 
-type UserRespDTO struct {
-	Name  string `json:"name"`
-	Email string `json:"email"`
+type QuisionerEachLayananRespDTO struct {
+	Layanan string                          `json:"layanan"`
+	Result  []*DataResultEachLayananRespDTO `json:"result"`
+}
+
+type DataResultEachLayananRespDTO struct {
+	Responden  string `json:"responden"`
+	Umur       string `json:"umur"`
+	Pekerjaan  string `json:"pekerjaan"`
+	Pendidikan string `json:"pendidikan"`
+	Nilai      int64  `json:"nilai"`
 }
